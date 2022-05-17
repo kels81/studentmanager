@@ -1,4 +1,4 @@
-package ibm.java.academy.services.dto;
+package ibm.java.academy.services.eduardocortes.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

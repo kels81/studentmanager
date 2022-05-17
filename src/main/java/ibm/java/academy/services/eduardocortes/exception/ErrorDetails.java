@@ -1,4 +1,4 @@
-package ibm.java.academy.services.exception;
+package ibm.java.academy.services.eduardocortes.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

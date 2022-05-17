@@ -1,4 +1,4 @@
-package ibm.java.academy.services.exception;
+package ibm.java.academy.services.eduardocortes.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

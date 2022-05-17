@@ -1,10 +1,10 @@
-package ibm.java.academy.services.service;
+package ibm.java.academy.services.eduardocortes.service;
 
-import ibm.java.academy.services.constant.BusinessErrorMessages;
-import ibm.java.academy.services.entity.Student;
-import ibm.java.academy.services.entity.enums.GenderEnum;
-import ibm.java.academy.services.exception.ResourceNotFoundException;
-import ibm.java.academy.services.repository.StudentRepository;
+import ibm.java.academy.services.eduardocortes.constant.BusinessErrorMessages;
+import ibm.java.academy.services.eduardocortes.entity.Student;
+import ibm.java.academy.services.eduardocortes.entity.enums.GenderEnum;
+import ibm.java.academy.services.eduardocortes.exception.ResourceNotFoundException;
+import ibm.java.academy.services.eduardocortes.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -65,14 +65,6 @@ class StudentServiceTest {
         Exception exception = assertThrows(ResourceNotFoundException.class, () -> studentService.findById(INVALID_ID));
 
         assertEquals(BusinessErrorMessages.STUDENT_ID_INVALID + INVALID_ID, exception.getMessage());
-    }
-
-    @Test
-    void findAllStudents() {
-        when(studentRepository.findAll()).thenReturn(getLstStudent());
-        List<Student> lstStudent = studentService.findAll();
-        assertNotNull(lstStudent);
-        assertEquals(1, lstStudent.size());
     }
 
     private Student getStudent() {

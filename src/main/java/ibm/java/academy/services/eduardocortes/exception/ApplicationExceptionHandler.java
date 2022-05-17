@@ -1,4 +1,4 @@
-package ibm.java.academy.services.exception;
+package ibm.java.academy.services.eduardocortes.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

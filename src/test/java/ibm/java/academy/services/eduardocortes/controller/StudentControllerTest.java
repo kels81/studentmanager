@@ -1,12 +1,12 @@
-package ibm.java.academy.services.controller;
+package ibm.java.academy.services.eduardocortes.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ibm.java.academy.services.constant.BusinessErrorMessages;
-import ibm.java.academy.services.dto.StudentDto;
-import ibm.java.academy.services.entity.Student;
-import ibm.java.academy.services.entity.enums.GenderEnum;
-import ibm.java.academy.services.exception.ResourceNotFoundException;
-import ibm.java.academy.services.service.StudentService;
+import ibm.java.academy.services.eduardocortes.constant.BusinessErrorMessages;
+import ibm.java.academy.services.eduardocortes.dto.StudentDto;
+import ibm.java.academy.services.eduardocortes.entity.Student;
+import ibm.java.academy.services.eduardocortes.entity.enums.GenderEnum;
+import ibm.java.academy.services.eduardocortes.exception.ResourceNotFoundException;
+import ibm.java.academy.services.eduardocortes.service.StudentService;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -19,8 +19,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -49,8 +47,6 @@ class StudentControllerTest {
     @MockBean
     private StudentService studentService;
 
-
-    private static final String URL_GET_ALL_STUDENT = "/academy/all";
     private static final String URL_POST_ADD_STUDENT = "/academy/student";
     private static final String URL_GET_ID_STUDENT = "/academy/student/{id}";
 
@@ -78,20 +74,6 @@ class StudentControllerTest {
     private static final String BIRT_DATE_DTO_VALID = "1972-07-11";
     private static final String GENDER_DTO_VALID = "F";
 
-
-    @Test
-    void getAllWhenSuccess() throws Exception {
-        when(studentService.findAll()).thenReturn(getLstStudent());
-
-        mockMvc.perform(
-                        get(URL_GET_ALL_STUDENT)
-                                .accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.students").isArray())
-                .andExpect(jsonPath("$.students[0].firstName").value(FIRST_NAME_M))
-                .andExpect(jsonPath("$.students[1].firstName").value(FIRST_NAME_F));
-    }
 
     @Test
     void getByIdWhenSuccess() throws Exception {
@@ -184,13 +166,6 @@ class StudentControllerTest {
 
     private StudentDto getStudentDto(String firstName, String lastName, String birthDate, String gender) {
         return new StudentDto(firstName, lastName, birthDate, gender);
-    }
-
-    private List<Student> getLstStudent() {
-        List<Student> lstStudent = new ArrayList<>();
-        lstStudent.add(new Student(ID_M, FIRST_NAME_M, LAST_NAME_M, BIRT_DATE_M, GENDER_M.getKey()));
-        lstStudent.add(new Student(ID_F, FIRST_NAME_F, LAST_NAME_F, BIRT_DATE_F, GENDER_F.getKey()));
-        return lstStudent;
     }
 
     private Student convertToEntity(StudentDto dto) {

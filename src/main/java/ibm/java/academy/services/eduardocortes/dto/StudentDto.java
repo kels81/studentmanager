@@ -1,8 +1,8 @@
-package ibm.java.academy.services.dto;
+package ibm.java.academy.services.eduardocortes.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ibm.java.academy.services.constant.BusinessErrorMessages;
+import ibm.java.academy.services.eduardocortes.constant.BusinessErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

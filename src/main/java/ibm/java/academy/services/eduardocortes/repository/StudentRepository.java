@@ -1,6 +1,6 @@
-package ibm.java.academy.services.repository;
+package ibm.java.academy.services.eduardocortes.repository;
 
-import ibm.java.academy.services.entity.Student;
+import ibm.java.academy.services.eduardocortes.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

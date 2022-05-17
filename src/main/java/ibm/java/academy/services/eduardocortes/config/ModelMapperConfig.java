@@ -1,4 +1,4 @@
-package ibm.java.academy.services.config;
+package ibm.java.academy.services.eduardocortes.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

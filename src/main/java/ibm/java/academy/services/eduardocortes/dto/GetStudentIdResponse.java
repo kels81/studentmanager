@@ -1,12 +1,10 @@
-package ibm.java.academy.services.dto;
+package ibm.java.academy.services.eduardocortes.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.List;
 
 /**
  * @author Eduardo Cortés
@@ -16,9 +14,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetStudentsDataResponse {
+public class GetStudentIdResponse {
 
-    @JsonProperty("students")
-    private List<StudentDto> data;
-
+    @JsonProperty("id")
+    private Long studentId;
 }

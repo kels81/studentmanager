@@ -12,7 +12,7 @@
 	<artifactId>studentmanager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>studentmanager</name>
-	<description>Java Academy Ejercicio Final - Student Manager Eduardo Cortes</description>
+	<description>Java Academy Ejercicio Final API demo with SpringBoot and H2 - Student Manager Eduardo Cortes</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

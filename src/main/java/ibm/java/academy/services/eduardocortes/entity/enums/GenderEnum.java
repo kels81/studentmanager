@@ -1,7 +1,7 @@
-package ibm.java.academy.services.entity.enums;
+package ibm.java.academy.services.eduardocortes.entity.enums;
 
-import ibm.java.academy.services.constant.BusinessErrorMessages;
-import ibm.java.academy.services.exception.ResourceNotFoundException;
+import ibm.java.academy.services.eduardocortes.constant.BusinessErrorMessages;
+import ibm.java.academy.services.eduardocortes.exception.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

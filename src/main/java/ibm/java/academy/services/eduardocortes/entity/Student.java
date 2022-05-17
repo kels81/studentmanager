@@ -1,4 +1,4 @@
-package ibm.java.academy.services.entity;
+package ibm.java.academy.services.eduardocortes.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

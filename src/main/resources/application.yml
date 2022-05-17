@@ -22,7 +22,7 @@ spring:
         format_sql: true
         id:
           new_generator_mappings: false
-    show-sql: true
+    show-sql: false
 
   # SWAGGER RESOLVE PROBLEMS
   mvc:

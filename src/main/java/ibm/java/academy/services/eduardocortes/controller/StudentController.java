@@ -1,12 +1,11 @@
-package ibm.java.academy.services.controller;
+package ibm.java.academy.services.eduardocortes.controller;
 
-import ibm.java.academy.services.dto.GetDataResponse;
-import ibm.java.academy.services.dto.GetStudentIdResponse;
-import ibm.java.academy.services.dto.GetStudentsDataResponse;
-import ibm.java.academy.services.dto.StudentDto;
-import ibm.java.academy.services.entity.Student;
-import ibm.java.academy.services.entity.enums.GenderEnum;
-import ibm.java.academy.services.service.StudentService;
+import ibm.java.academy.services.eduardocortes.dto.GetDataResponse;
+import ibm.java.academy.services.eduardocortes.dto.GetStudentIdResponse;
+import ibm.java.academy.services.eduardocortes.dto.StudentDto;
+import ibm.java.academy.services.eduardocortes.entity.Student;
+import ibm.java.academy.services.eduardocortes.entity.enums.GenderEnum;
+import ibm.java.academy.services.eduardocortes.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
@@ -16,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Eduardo Cortés
@@ -33,16 +30,6 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-
-
-    @GetMapping("/all")
-    public ResponseEntity<GetStudentsDataResponse> getAll() {
-        List<StudentDto> lstDto = studentService.findAll()
-                .stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
-        return new ResponseEntity(new GetStudentsDataResponse(lstDto), HttpStatus.OK);
-    }
 
     @GetMapping("/student/{id}")
     public ResponseEntity<GetDataResponse> getById(@PathVariable("id") Long id) {
@@ -63,17 +50,10 @@ public class StudentController {
         return student;
     }
 
-    private StudentDto convertToDto(Student student) {
-        StudentDto dto = modelMapper.map(student, StudentDto.class);
-        dto.setBirthDate(dto.getDateStringConverted(student.getBirthDate()));
-        return dto;
-    }
-
     private String getFullName(Student student) {
-        String sb = student.getFirstName() +
+        return student.getFirstName() +
                 StringUtils.SPACE +
                 student.getLastName();
-        return sb;
     }
 
 }

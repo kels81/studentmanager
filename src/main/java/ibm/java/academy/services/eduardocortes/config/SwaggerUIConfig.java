@@ -1,4 +1,4 @@
-package ibm.java.academy.services.config;
+package ibm.java.academy.services.eduardocortes.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
