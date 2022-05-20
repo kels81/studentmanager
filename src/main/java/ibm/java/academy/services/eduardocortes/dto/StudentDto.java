@@ -20,7 +20,6 @@ import java.time.format.DateTimeParseException;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@JsonPropertyOrder({"firstName", "lastName", "birthDate", "gender"})
 public class StudentDto {
 
     @JsonProperty(value = "firstName", required = true)
@@ -35,14 +34,14 @@ public class StudentDto {
 
     @JsonProperty(value = "birthDate", required = true)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @NotEmpty(message = "birthDate must not be null nor empty/blank value example pattern: yyyy-MM-dd")
-    @Size(max = 10, message = "birthDate most be 10 characters, example pattern: yyyy-MM-dd")
+    @NotEmpty(message = "Birth Date must not be null nor empty/blank value example pattern: yyyy-MM-dd")
+    @Size(max = 10, message = "Birth Date most be 10 characters, example pattern: yyyy-MM-dd")
     private String birthDate;
 
     @JsonProperty(value = "gender", required = true)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "M / F")
-    @NotEmpty(message = "gender must not be null nor empty/blank value")
-    @Size(max = 1, message = "gender most be one character example: M / F")
+    @NotEmpty(message = "Gender must not be null nor empty/blank value")
+    @Size(max = 1, message = "Gender most be one character, example: M / F")
     private String gender;
 
     public LocalDate getStringDateConverted(String strDate) {
