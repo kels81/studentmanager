@@ -107,6 +107,7 @@ class StudentControllerTest {
     void addWhenCreatedSuccess() throws Exception {
         StudentDto dto = getStudentDto(FIRST_NAME_DTO_VALID, LAST_NAME_DTO_VALID, BIRT_DATE_DTO_VALID, GENDER_DTO_VALID);
         Student student = getStudent(ID_F, FIRST_NAME_F, LAST_NAME_F, BIRT_DATE_F, GENDER_F.getKey());
+        when(studentService.findStudent(convertToEntity(dto))).thenReturn(Boolean.FALSE);
         when(studentService.add(convertToEntity(dto))).thenReturn(student);
 
         mockMvc.perform(
@@ -117,6 +118,21 @@ class StudentControllerTest {
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(ID_F));
+    }
+
+    @Test
+    void addWhenCreatedFail() throws Exception {
+        StudentDto dto = getStudentDto(FIRST_NAME_DTO_VALID, LAST_NAME_DTO_VALID, BIRT_DATE_DTO_VALID, GENDER_DTO_VALID);
+        when(studentService.findStudent(convertToEntity(dto))).thenReturn(Boolean.TRUE);
+
+        mockMvc.perform(
+                        post(URL_POST_ADD_STUDENT)
+                                .content(asJsonString(dto))
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400));
     }
 
     @Test

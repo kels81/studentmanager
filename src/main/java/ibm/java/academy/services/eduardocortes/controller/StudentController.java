@@ -1,5 +1,6 @@
 package ibm.java.academy.services.eduardocortes.controller;
 
+import ibm.java.academy.services.eduardocortes.constant.BusinessErrorMessages;
 import ibm.java.academy.services.eduardocortes.dto.GetDataResponse;
 import ibm.java.academy.services.eduardocortes.dto.GetStudentIdResponse;
 import ibm.java.academy.services.eduardocortes.dto.StudentDto;
@@ -39,8 +40,11 @@ public class StudentController {
 
     @PostMapping("/student")
     public ResponseEntity<GetStudentIdResponse> add(@RequestBody @Valid StudentDto studentDto) {
-        Student addStudent = studentService.add(convertToEntity(studentDto));
-        return new ResponseEntity(new GetStudentIdResponse(addStudent.getId()), HttpStatus.CREATED);
+        Student student = convertToEntity(studentDto);
+        if (studentService.findStudent(student)) {
+            throw new IllegalArgumentException(BusinessErrorMessages.STUDENT_FIRST_NAME_AND_LAST_NAME_AND_BIRTH_DATE_CONFLICT);
+        }
+        return new ResponseEntity(new GetStudentIdResponse(studentService.add(student).getId()), HttpStatus.CREATED);
     }
 
     private Student convertToEntity(StudentDto dto) {

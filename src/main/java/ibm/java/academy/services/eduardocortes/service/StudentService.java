@@ -36,4 +36,14 @@ public class StudentService {
                 .orElseThrow(() -> new ResourceNotFoundException(BusinessErrorMessages.STUDENT_ID_INVALID + id));
     }
 
+    public boolean findStudent(final Student student) {
+        log.info("Finding student by firstName: {} and lastName: {} and birthdate: {}",
+                student.getFirstName(),
+                student.getLastName(),
+                student.getBirthDate());
+        boolean isExist = studentRepository.findByFirstNameAndLastNameAndBirthDate(student.getFirstName(), student.getLastName(), student.getBirthDate()).isPresent();
+        log.info(isExist ? "Exist student" : "Doesn't exist student");
+        return isExist;
+    }
+
 }
